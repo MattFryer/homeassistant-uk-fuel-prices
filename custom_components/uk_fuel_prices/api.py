@@ -356,8 +356,6 @@ class FuelFinderApi:
 
         for station_id, station in stations.items():
             station_prices = prices.get(station_id, {})
-            if not station_prices:
-                continue
 
             e10_data = station_prices.get("E10", {})
             b7_data = station_prices.get("B7_STANDARD", {})
@@ -400,7 +398,7 @@ class FuelFinderApi:
         best_b7 = find_cheapest("b7_price")
 
         return {
-            "state": len(result),
+            "state": len(stations),
             "best_e10": best_e10,
             "best_b7": best_b7,
             "stations": result,
